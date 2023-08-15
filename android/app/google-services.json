@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "435929999095",
+    "project_id": "elite-a7fb8",
+    "storage_bucket": "elite-a7fb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435929999095:android:adb7734771f945ef4bd5f2",
+        "android_client_info": {
+          "package_name": "com.nightcoders.elite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435929999095-3hlvqdhmueh77uce2nrts3crlb769lvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvdq3un1fB32ddCVowPwTmvym4ZDWAU4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435929999095-3hlvqdhmueh77uce2nrts3crlb769lvb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,16 @@
     package="com.example.ezeehome_webview">
     <!-- Other manifest declarations -->
    <uses-permission android:name="android.permission.INTERNET"/>
-   <uses-permission android:name="android.permission.CALL_PHONE"/>
+   <!-- <uses-permission android:name="android.permission.CAMERA" />
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+   <uses-permission android:name="android.permission.VIDEO_CAPTURE" />
+   <uses-permission android:name="android.permission.AUDIO_CAPTURE" /> -->
+   <!-- Add more permission entries as needed -->
+   <!-- <uses-permission android:name="android.permission.CALL_PHONE"/> -->
    <queries>
     <!-- If your app checks for SMS support -->
     <intent>
@@ -16,17 +25,9 @@
     </intent>
    </queries>
 
-   <!-- <uses-permission android:name="android.permission.CAMERA" />
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-   <uses-permission android:name="android.permission.RECORD_AUDIO" />
-   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-   <uses-permission android:name="android.permission.VIDEO_CAPTURE" />
-   <uses-permission android:name="android.permission.AUDIO_CAPTURE" /> -->
-   <!-- Add more permission entries as needed -->
+
    <application
-        android:label="Naija Chef Hub"
+        android:label="Elite"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <!-- Add the service declaration for custom tabs support -->
@@ -38,6 +39,7 @@
                 <action android:name="android.support.customtabs.action.CustomTabsService" />
             </intent-filter>
         </service>
+        <!-- for web view camera -->
         <provider
             android:name="com.pichillilorenzo.flutter_inappwebview.InAppWebViewFileProvider"
             android:authorities="${applicationId}.flutter_inappwebview.fileprovider"

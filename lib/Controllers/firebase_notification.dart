@@ -1,4 +1,3 @@
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class FirebaseNotificationHandling {
@@ -6,8 +5,8 @@ class FirebaseNotificationHandling {
 
   Future<void> initNotification() async {
     await _firebaseMessaging.requestPermission();
-    final FCMToken = await _firebaseMessaging.getToken();
-    print('FCMToken:$FCMToken');
+    // final FCMToken = await _firebaseMessaging.getToken();
+    // print('FCMToken:$FCMToken');
 
     //background
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);

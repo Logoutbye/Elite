@@ -54,7 +54,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                             ),
                             child: GestureDetector(
                               onTap: () {
-                               SkipOrDone();
+                                SkipOrDone();
                               },
                               // arrow back button
                               child: Align(
@@ -87,7 +87,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                             ),
                             child: GestureDetector(
                               onTap: () {
-                             SkipOrDone();
+                                SkipOrDone();
                               },
                               // arrow back button
                               child: Align(
@@ -139,11 +139,19 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                         ]),
                   ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                ListView(
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
-                    Image.asset('assets/boarding/boarding screen (4).png'),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/boarding/boarding screen (4).png',
+                          fit: BoxFit.fill,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
@@ -170,7 +178,8 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                         },
                         child: Text(
                           'Back',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.white),
                         )),
                   )
                 : SizedBox(),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:ezeehome_webview/Controllers/InternetConnectivity.dart';
 import 'package:ezeehome_webview/constants.dart';
 import 'package:flutter/foundation.dart';
@@ -7,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../Controllers/errors_handling.dart';
 import '../changes.dart';
 
@@ -113,16 +114,17 @@ class _HomeState extends State<Home> {
       //   return true;
       // },
       child: Scaffold(
-        
         backgroundColor: Colors.transparent,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0),
-          child: AppBar(
-            forceMaterialTransparency:false,
-            // backgroundColor: MyColors.kprimaryColor,
-            elevation: 0,
-          ),
-        ),
+
+        ///
+        // appBar: PreferredSize(
+        //   preferredSize: Size.fromHeight(0),
+        //   child: AppBar(
+        //     forceMaterialTransparency: false,
+        //     // backgroundColor: MyColors.kprimaryColor,
+        //     elevation: 0,
+        //   ),
+        // ),
         body: Padding(
           padding: const EdgeInsets.only(top: 0),
           child: Stack(
@@ -133,7 +135,7 @@ class _HomeState extends State<Home> {
                 onWebViewCreated: (controller) {
                   _webViewController = controller;
                 },
-          
+
                 onLoadStart: (controller, url) {
                   setState(() {
                     Changes.mainUrl = url?.toString() ?? '';
@@ -166,7 +168,8 @@ class _HomeState extends State<Home> {
                   // Handle web page load errors here
                 },
                 pullToRefreshController: PullToRefreshController(
-                    options: PullToRefreshOptions(color: MyColors.kprimaryColor),
+                    options:
+                        PullToRefreshOptions(color: MyColors.kprimaryColor),
                     onRefresh: () {
                       Navigator.pop(context);
                       Navigator.of(context).push(MaterialPageRoute(
@@ -191,9 +194,9 @@ class _HomeState extends State<Home> {
                         .GRANT, // Grant camera permission
                   );
                 },
-          
+
                 // Track if the website already asked for geolocation permission
-          
+
                 androidOnGeolocationPermissionsShowPrompt:
                     (controller, origin) async {
                   if (hasGeolocationPermission) {
@@ -246,37 +249,43 @@ class _HomeState extends State<Home> {
                     }
                   }
                 },
-          
+
                 shouldOverrideUrlLoading: (controller, navigationAction) async {
                   setState(() {
                     _isLoading = true;
                   });
-          
+
                   _loaderKey.currentState?.setState(() {
                     // This is to trigger a rebuild of the loader widget
                   });
                   var uri = navigationAction.request.url;
                   if (uri!.toString().startsWith(Changes.startPointUrl)) {
                     return NavigationActionPolicy.ALLOW;
-                  } else if (uri.toString().startsWith(Changes.makePhoneCallUrl)) {
+                  } else if (uri
+                      .toString()
+                      .startsWith(Changes.makePhoneCallUrl)) {
                     if (kDebugMode) {
                       print('opening phone $uri');
                     }
                     _makePhoneCall(uri.toString());
                     setState(() {
-                      _isLoading=false;
+                      _isLoading = false;
                     });
                     return NavigationActionPolicy.CANCEL;
-                  } else if (uri.toString().startsWith(Changes.openWhatsAppUrl)) {
+                  } else if (uri
+                      .toString()
+                      .startsWith(Changes.openWhatsAppUrl)) {
                     if (kDebugMode) {
                       print('opening WhatsApp $uri');
                     }
                     _openWhatsApp('$uri');
-                     setState(() {
-                      _isLoading=false;
+                    setState(() {
+                      _isLoading = false;
                     });
                     return NavigationActionPolicy.CANCEL;
-                  } else if (uri.toString().startsWith(Changes.blockNavigationUrl)) {
+                  } else if (uri
+                      .toString()
+                      .startsWith(Changes.blockNavigationUrl)) {
                     if (kDebugMode) {
                       print('Blocking navigation to $uri');
                     }
@@ -288,9 +297,11 @@ class _HomeState extends State<Home> {
                     setState(() {
                       _isLoading = false;
                     });
-                    _launchExternalUrl(uri.toString());
+
+                    /// fahad comment
+                    // _launchExternalUrl(uri.toString());
                     // You can handle other links here and decide how to navigate to them
-                    return NavigationActionPolicy.CANCEL;
+                    return NavigationActionPolicy.ALLOW;
                     // if (uri.toString() ==
                     //     'https://m.facebook.com/oauth/error/?error_code=PLATFORM__LOGIN_DISABLED_FROM_WEBVIEW_OLD_SDK_VERSION&display=touch') {
                     //   return NavigationActionPolicy.CANCEL;
@@ -331,7 +342,6 @@ class _HomeState extends State<Home> {
               //     ),
               //   ),
               // ),
-            
             ],
           ),
         ),
